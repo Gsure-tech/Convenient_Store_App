@@ -40,6 +40,7 @@ class ManagerServiceTest {
     @Test
     public void managerShouldFireCashier(){
 
-        assertEquals("Cashier is fired because of his grade is " + cashier2.getGrade(),managerService.fireCashier(cashier2));
+        assertEquals("Cashier is fired because of his grade is " + cashier2.getGrade(),
+                managerService.fireCashier(cashier2));
     }
 }

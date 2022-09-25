@@ -22,10 +22,14 @@ public class CashierServices implements CashierInterface {
     }
 
     @Override
-    public Products sellProduct(Customer customer) {
-
-        return null;
+    public String sellProduct(Products products) {
+        if(Store.productList.contains(products)){
+            return "Sold successfully";
+        }else
+        return "Product not available";
     }
+
+
 
     @Override
     public String dispenseReceipt() {
