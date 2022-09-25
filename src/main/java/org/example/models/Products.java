@@ -1,12 +1,15 @@
 package org.example.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Products {
     private int product_id;
     private String productName;
     private double price;
     private String manufactureDate;
     private String expiryDate;
-
+    List<Products> productList = new ArrayList<>();
     @Override
     public String toString() {
         return "Products{" +
