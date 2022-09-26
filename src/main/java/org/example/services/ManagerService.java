@@ -3,6 +3,7 @@ package org.example.services;
 import org.example.enums.Grade;
 import org.example.enums.Qualifications;
 import org.example.interfaces.ManagerInterface;
+import org.example.models.Applicant;
 import org.example.models.Cashier;
 import org.example.models.Manager;
 
@@ -14,9 +15,10 @@ public class ManagerService implements ManagerInterface {
     }
 
     @Override
-    public Cashier hireCashier(Cashier cashier) {
-        if(cashier.getQualifications()== Qualifications.BSC && cashier.getGrade()==Grade.FIRST_CLASS){
-            return cashier;
+    public Applicant hireCashier(Applicant applicant) {
+        if(applicant.getQualifications()== Qualifications.BSC && applicant.getGrade()==Grade.FIRST_CLASS){
+            System.out.println("Congratulations you have been hired as Cashier");
+            return applicant;
        }else
         //
         return null;

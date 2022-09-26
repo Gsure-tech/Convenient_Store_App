@@ -32,7 +32,13 @@ public class CashierServices implements CashierInterface {
 
 
     @Override
-    public String dispenseReceipt() {
-        return null;
+    public String dispenseReceipt(Customer customer, Products products) {
+        return "***********-----RECEIPT-----********* \n" +
+                "Customer Name: " + customer.getFullName() + "\n" +
+                "Address: " + customer.getAddress() + "\n" +
+                "Product name: " + products.getProductName() + "\n" +
+                "Price: " + products.getPrice() + "\n" +
+                "Manufacture Date: " + products.getManufactureDate() + "\n" +
+                "Expiry Date: " + products.getExpiryDate();
     }
 }
