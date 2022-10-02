@@ -52,23 +52,23 @@ public class Main {
         StaffServices staffServices = new StaffServices(cashier);
         System.out.println( staffServices.takeLeave(2,9));
 
-//        String path ="/Users/gsure-tech/IdeaProjects/Convienience_Store/src/productslist.csv";
-//        BufferedReader br;
-//        String line ="";
-//
-//        {
-//            try {
-//                br = new BufferedReader(new FileReader(path));
-//                while ((line= br.readLine())!=null){
-//                    System.out.printf(line);
-//
-//                }
-//            } catch (FileNotFoundException e) {
-//                e.printStackTrace();
-//            }catch (IOException e){
-//                e.printStackTrace();
-//            }
-//        }
+        String path ="/Users/gsure-tech/IdeaProjects/Convienience_Store/src/productslist.csv";
+        BufferedReader br;
+        String line ="";
+
+        {
+            try {
+                br = new BufferedReader(new FileReader(path));
+                while ((line= br.readLine())!=null){
+                    System.out.println(line);
+
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }
 
     }
 }
