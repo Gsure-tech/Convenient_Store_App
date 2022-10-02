@@ -3,9 +3,8 @@ package org.example.models;
 import org.example.enums.Gender;
 import org.example.enums.Grade;
 import org.example.enums.Qualifications;
-import org.example.interfaces.CashierInterface;
 
-public class Cashier extends Staff{
+public class Cashier extends Customer {
 
 
     private Qualifications qualifications;

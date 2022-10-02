@@ -3,5 +3,5 @@ package org.example.interfaces;
 import org.example.models.Leave;
 
 public interface StaffInterface {
-    Leave takeLeave();
+    String takeLeave(int startDay,int endDay);
 }

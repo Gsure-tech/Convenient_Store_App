@@ -7,6 +7,12 @@ import org.example.models.*;
 import org.example.services.CashierServices;
 import org.example.services.CustomerService;
 import org.example.services.ManagerService;
+import org.example.services.StaffServices;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
@@ -40,7 +46,29 @@ public class Main {
         String imple = cashierServices.sellProduct(Battery);
 
          Products products =  customerService.buyProduct(Battery);
-         System.out.println(cashierServices.dispenseReceipt(customer,SoftDrink));
+       //  System.out.println(cashierServices.dispenseReceipt(customer,SoftDrink));
        // System.out.println("hello");
+        Leave leave = new Leave(1,12);
+        StaffServices staffServices = new StaffServices(cashier);
+        System.out.println( staffServices.takeLeave(2,9));
+
+//        String path ="/Users/gsure-tech/IdeaProjects/Convienience_Store/src/productslist.csv";
+//        BufferedReader br;
+//        String line ="";
+//
+//        {
+//            try {
+//                br = new BufferedReader(new FileReader(path));
+//                while ((line= br.readLine())!=null){
+//                    System.out.printf(line);
+//
+//                }
+//            } catch (FileNotFoundException e) {
+//                e.printStackTrace();
+//            }catch (IOException e){
+//                e.printStackTrace();
+//            }
+//        }
+
     }
 }
