@@ -15,11 +15,11 @@ public class CashierServices implements CashierInterface {
         this.cashier = cashier;
     }
 
-    @Override
-    public Products addProduct(Products products) {
-        Store.productList.add(products);
-        return products;
-    }
+//    @Override
+//    public Products addProduct(Products products) {
+//        Store.productList.add(products);
+//        return products;
+//    }
 
     @Override
     public String sellProduct(Products products) {
