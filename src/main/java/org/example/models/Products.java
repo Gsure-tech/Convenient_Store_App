@@ -4,41 +4,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Products {
-    private int product_id;
+    private int productId;
+    private String productCategory;
     private String productName;
+    private int quantity;
     private double price;
-    private String manufactureDate;
-    private String expiryDate;
-    List<Products> productList = new ArrayList<>();
-    @Override
-    public String toString() {
-        return "Products{" +
-                "product_id=" + product_id +
-                ", productName='" + productName + '\'' +
-                ", price=" + price +
-                ", manufactureDate='" + manufactureDate + '\'' +
-                ", expiryDate='" + expiryDate + '\'' +
-                '}';
-    }
+    private int manufactureYear;
+    private int expiryYear;
 
-    public Products() {
-    }
-
-    public Products(int product_id, String productName, double price,
-                    String manufactureDate, String expiryDate) {
-        this.product_id = product_id;
+    public Products(int productId, String productCategory, String productName, int quantity, double price, int manufactureYear, int expiryYear) {
+        this.productId = productId;
+        this.productCategory = productCategory;
         this.productName = productName;
+        this.quantity = quantity;
         this.price = price;
-        this.manufactureDate = manufactureDate;
-        this.expiryDate = expiryDate;
+        this.manufactureYear = manufactureYear;
+        this.expiryYear = expiryYear;
     }
 
-    public int getProduct_id() {
-        return product_id;
+    public int getProductId() {
+        return productId;
     }
 
-    public void setProduct_id(int product_id) {
-        this.product_id = product_id;
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public String getProductCategory() {
+        return productCategory;
+    }
+
+    public void setProductCategory(String productCategory) {
+        this.productCategory = productCategory;
     }
 
     public String getProductName() {
@@ -49,6 +46,14 @@ public class Products {
         this.productName = productName;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     public double getPrice() {
         return price;
     }
@@ -57,19 +62,41 @@ public class Products {
         this.price = price;
     }
 
-    public String getManufactureDate() {
-        return manufactureDate;
+    public int getManufactureYear() {
+        return manufactureYear;
     }
 
-    public void setManufactureDate(String manufactureDate) {
-        this.manufactureDate = manufactureDate;
+    public void setManufactureYear(int manufactureYear) {
+        this.manufactureYear = manufactureYear;
     }
 
-    public String getExpiryDate() {
-        return expiryDate;
+    public int getExpiryYear() {
+        return expiryYear;
     }
 
-    public void setExpiryDate(String expiryDate) {
-        this.expiryDate = expiryDate;
+    public void setExpiryYear(int expiryYear) {
+        this.expiryYear = expiryYear;
     }
+
+    @Override
+    public String toString() {
+        return "Products{" +
+                "productId=" + productId +
+                ", productCategory='" + productCategory + '\'' +
+                ", productName='" + productName + '\'' +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                ", manufactureYear=" + manufactureYear +
+                ", expiryYear=" + expiryYear +
+                '}';
+    }
+    //    int productId = Integer.parseInt(detailed[0]);
+// String productCategory = detailed[1];
+// String productName = detailed[2];
+// String quantity = detailed[3];
+// int price = Integer.parseInt(detailed[4]);
+// int manufactureYear = Integer.parseInt(detailed[5 ]);
+// int expiryYear = Integer.parseInt(detailed[6]);
+// List<Products> productList = new ArrayList<>();
+
 }

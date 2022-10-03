@@ -17,9 +17,8 @@ class CustomerServiceTest {
     @BeforeEach
     public void setUp(){
 
-
-    products = new Products(2,"Bread",200.0,
-            "2-6-2021","4-6-2021");
+        Products products = new Products(1,"food","Rice",
+                30,2000.0,2019,2022);
     Store.productList.add(products);
     customer = new Customer(1,+234849473l, "Abdulganiyu", Gender.MALE,
                 "No 2 college road");

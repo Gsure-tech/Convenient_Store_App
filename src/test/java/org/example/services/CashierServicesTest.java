@@ -14,8 +14,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class CashierServicesTest {
     @Test
     public void cashierShouldSell(){
-       Products products = new Products(2,"Bread",200.0,
-                "2-6-2021","4-6-2021");
+        Products products = new Products(1,"drinks","malt",
+                10,3000.0,2013,2021);
         Store.productList.add(products);
 
         Cashier cashier = new Cashier(1,+234849473l, "Abdulganiyu", Gender.MALE,

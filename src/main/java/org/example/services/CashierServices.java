@@ -38,7 +38,7 @@ public class CashierServices implements CashierInterface {
                 "Address: " + customer.getAddress() + "\n" +
                 "Product name: " + products.getProductName() + "\n" +
                 "Price: " + products.getPrice() + "\n" +
-                "Manufacture Date: " + products.getManufactureDate() + "\n" +
-                "Expiry Date: " + products.getExpiryDate();
+                "Manufacture Date: " + products.getManufactureYear() + "\n" +
+                "Expiry Date: " + products.getExpiryYear();
     }
 }

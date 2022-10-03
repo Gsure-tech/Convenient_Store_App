@@ -13,6 +13,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -27,15 +28,13 @@ public class Main {
         CashierServices cashierServices=new CashierServices(cashier);
         ManagerService managerService = new ManagerService(manager);
 
-        Products Bread = new Products(1,"Bread",200.0,
-                "12-2-2020","14-2-2020");
-        Products SoftDrink = new Products(2,"Soft_Drinks",5000.0,
-                "12-2-2020","14-2-2021");
-        Products Battery= new Products(3,"Battery",4000.0,
-                "12-2-2020","14-2-2020");
+        Products rice = new Products(1,"food","Rice",
+                30,2000.0,2019,2022);
 
-        cashierServices.addProduct(Bread);
-        cashierServices.addProduct(SoftDrink);
+        Products drink = new Products(1,"drinks","malt",
+                10,3000.0,2013,2021);
+        cashierServices.addProduct(rice);
+        cashierServices.addProduct(drink);
        // cashierServices.addProduct(Battery);
 
        Applicant applicant = new Applicant(1,+234849473l, "Salim",Gender.MALE,
@@ -43,24 +42,36 @@ public class Main {
         Customer customer = new Customer(1,+234849473l, "Musa",Gender.MALE,
                 "No 2 college road");
         CustomerService customerService= new CustomerService(customer);
-        String imple = cashierServices.sellProduct(Battery);
 
-         Products products =  customerService.buyProduct(Battery);
+
+         Products products =  customerService.buyProduct(rice);
        //  System.out.println(cashierServices.dispenseReceipt(customer,SoftDrink));
        // System.out.println("hello");
         Leave leave = new Leave(1,12);
         StaffServices staffServices = new StaffServices(cashier);
-        System.out.println( staffServices.takeLeave(2,9));
+        //System.out.println( staffServices.takeLeave(2,9));
 
         String path ="/Users/gsure-tech/IdeaProjects/Convienience_Store/src/productslist.csv";
         BufferedReader br;
         String line ="";
-
+        ArrayList<Products> product =new ArrayList<>();
         {
             try {
                 br = new BufferedReader(new FileReader(path));
                 while ((line= br.readLine())!=null){
-                    System.out.println(line);
+                    String[] detailed = line.split(",");
+
+
+                    if(detailed[0].equals("Product_Id"))
+                        continue;
+                    int productId = Integer.parseInt(detailed[0]);
+                    String productCategory = detailed[1];
+                    String productName = detailed[2];
+                    int quantity = Integer.parseInt(detailed[3]);
+                    double price = Double.parseDouble(detailed[4]);
+                    int manufactureYear = Integer.parseInt(detailed[5]);
+                    int expiryYear = Integer.parseInt(detailed[6]);
+                    product.add(new Products(productId,productCategory,productName,quantity,price,manufactureYear,expiryYear));
 
                 }
             } catch (FileNotFoundException e) {
@@ -69,6 +80,9 @@ public class Main {
                 e.printStackTrace();
             }
         }
+
+
+        System.out.println(product);
 
     }
 }
