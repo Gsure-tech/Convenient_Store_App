@@ -1,0 +1,26 @@
+ProductId,ProductCategory,ProductName,Quantity,Price,ManufacturYear,ExpiryYear
+1002,Computing,Desktop,7,2000,2021,2022
+1003,Computing,Memory Card,10,2000,2021,2022
+1004,Computing,Printer,5,15000,2020,2022
+1005,Computing,Laptop,8,250000,2020,2022
+1006,Computing,Battery,30,4000,2019,2022
+1007,Drinks,Coffee,30,900,2021,2022
+1008,Drinks,Red Wine,20,4000,2021,2022
+1009,Drinks,Malt,20,250,2018,2022
+1010,Drinks,Vodka,5,4000,2021,2022
+1011,Drinks,Whiskey,20,2000,2019,2022
+1012,Electronics,Digital Camera,10,5000,2019,2022
+1013,Electronics,Video Surveillance,5,4000,2021,2022
+1014,Electronics,Stabilizer,4,15000,2020,2022
+1015,Electronics,Projector,9,13000,2020,2022
+1016,Electronics,DVD Player,6,7000,2020,2022
+1017,Electronics,Smart Tv,7,4000,2021,2022
+1018,Food,Cooking Oil,40,2000,2021,2022
+1019,Food,Rice,30,34000,2020,2022
+1020,Food,Noodles,40,600,2020,2022
+1021,Food,Flour,10,900,2019,2022
+1022,Gaming,Playstation 5,4,7000,2021,2022
+1023,Gaming,XBOX 360,3,20000,2021,2022
+1024,Gaming,Playstation 3,6,15000,2020,2022
+1025,Gaming,Nintendo 3DS,2,9000,2021,2022
+1026,Gaming,Playstation 4,3,4000,2019,2022

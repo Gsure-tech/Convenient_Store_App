@@ -36,7 +36,7 @@ public class Main {
         CustomerService customerService= new CustomerService(customer);
 
        // Products products = customerService.buyProduct("Rice",5);
-        System.out.println(customerService.buyProduct("Rice",5));
+        System.out.println(customerService.buyProduct("Coffee",30));
 
        //  System.out.println(cashierServices.dispenseReceipt(customer,SoftDrink));
        // System.out.println("hello");

@@ -30,9 +30,9 @@ CustomerService implements CustomerInterface {
     public Products buyProduct(String productName, int quantity) {
         StoreService.load();
 //        if(Store.productList.contains(Store.productList.get(2).equals(productName))){
-//            System.out.println("good");
+            //System.out.println(Store.productList.);
             for (int i = 0; i < Store.productList.size(); i++) {
-                if(Store.productList.get(i).getProductName().equals(productName)){
+                if(Store.productList.get(i).getProductName().equals(productName) && quantity<=Store.productList.get(i).getQuantity()){
                     return Store.productList.get(i);
                 }
            // }

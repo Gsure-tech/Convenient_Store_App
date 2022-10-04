@@ -11,7 +11,7 @@ public class StoreService {
     public static void load() {
 
 
-        String path = "/Users/gsure-tech/IdeaProjects/Convienience_Store/src/productslist.csv";
+        String path = "/Users/gsure-tech/IdeaProjects/week-two-sq012-Gsure-tech/src/ProductList - Sheet1.csv";
         BufferedReader br;
         String line = "";
         {
@@ -19,7 +19,7 @@ public class StoreService {
                 br = new BufferedReader(new FileReader(path));
                 while ((line = br.readLine()) != null) {
                     String[] detailed = line.split(",");
-                    if (detailed[0].equals("Product_Id"))
+                    if (detailed[0].equals("ProductId"))
                         continue;
                     int productId = Integer.parseInt(detailed[0]);
                     String productCategory = detailed[1];
