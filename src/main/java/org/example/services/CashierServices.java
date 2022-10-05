@@ -70,6 +70,6 @@ public class CashierServices implements CashierInterface {
 
             }
         }
-        return "";
+        return "No product bought";
     }
 }
