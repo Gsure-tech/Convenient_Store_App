@@ -37,10 +37,10 @@ public class Main {
 
        // Products products = customerService.buyProduct("Rice",5);
 
-        System.out.println(customerService.buyProduct("Rie",15));
+       // System.out.println(customerService.buyProduct("Rie",15));
         //System.out.println(cashierServices.sellProduct("Rice",20));
 
-       //  System.out.println(cashierServices.dispenseReceipt(customer,SoftDrink));
+        System.out.println(cashierServices.dispenseReceipt(customer,"Malt",4));
        // System.out.println("hello");
         Leave leave = new Leave(1,12);
         StaffServices staffServices = new StaffServices(cashier);

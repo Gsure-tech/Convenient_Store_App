@@ -41,7 +41,7 @@ CustomerService implements CustomerInterface {
                     //System.out.println(Store.productList.get(i));
                     System.out.println("Product bought successfully");
                    // Store.productList.get(i).setQuantity(Store.productList.get(i).getQuantity() - quantity);
-                Store.productList.get(i).setQuantity(quantity);
+                   Store.productList.get(i).setQuantity(quantity);
                  //   System.out.println("Remaining Product");
                     return Store.productList.get(i);
 

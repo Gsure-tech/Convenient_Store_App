@@ -53,13 +53,23 @@ public class CashierServices implements CashierInterface {
     }
 
     @Override
-    public String dispenseReceipt(Customer customer, Products products) {
-        return "***********-----RECEIPT-----********* \n" +
-                "Customer Name: " + customer.getFullName() + "\n" +
-                "Address: " + customer.getAddress() + "\n" +
-                "Product name: " + products.getProductName() + "\n" +
-                "Price: " + products.getPrice() + "\n" +
-                "Manufacture Date: " + products.getManufactureYear() + "\n" +
-                "Expiry Date: " + products.getExpiryYear();
+    public String dispenseReceipt(Customer customer, String productName, int quantity) {
+        StoreService.load();
+        for (int i = 0; i < Store.productList.size(); i++) {
+            if(Store.productList.get(i).getProductName().equals(productName)){
+                Store.productList.get(i).setQuantity(quantity);
+            return "******-----RECEIPT-----****** \n" +
+                    "Customer Name: " + customer.getFullName() + "\n" +
+                    "Address: " + customer.getAddress() + "\n" +
+                    "Product name: " + Store.productList.get(i).getProductName() + "\n" +
+                    "Quantity: " + Store.productList.get(i).getQuantity() + "\n" +
+                    "Price: " + Store.productList.get(i).getPrice() + "\n" +
+                    "Manufacture Date: " + Store.productList.get(i).getManufactureYear() + "\n" +
+                    "Expiry Date: " + Store.productList.get(i).getExpiryYear() + "\n" +
+                    "Total Amount payable: " + Store.productList.get(i).getPrice()*quantity ;
+
+            }
+        }
+        return "";
     }
 }
