@@ -5,6 +5,6 @@ import org.example.models.Products;
 
 public interface CashierInterface {
     //Products addProduct(Products products);
-    String sellProduct(Products products);
+    Products sellProduct(String productName, int quantity);
     String dispenseReceipt(Customer customer, Products products);
 }

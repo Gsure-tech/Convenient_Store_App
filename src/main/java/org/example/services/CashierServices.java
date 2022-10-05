@@ -1,5 +1,6 @@
 package org.example.services;
 
+import org.example.enums.Gender;
 import org.example.interfaces.CashierInterface;
 import org.example.models.Cashier;
 import org.example.models.Customer;
@@ -21,15 +22,35 @@ public class CashierServices implements CashierInterface {
 //        return products;
 //    }
 
+//    @Override
+//    public Products (Products products) {
+//
+//        //CustomerService customerService = new CustomerService(new Customer(2,+23707493843l,"Emma", Gender.MALE,"No.30 college road"));
+//       CustomerService customerService= new CustomerService();
+//        if(Store.productList.contains(products)){
+//            return "Sold successfully";
+//        }else
+//        return "Product not available";
+//    }
+
+
     @Override
-    public String sellProduct(Products products) {
-        if(Store.productList.contains(products)){
-            return "Sold successfully";
-        }else
-        return "Product not available";
+    public Products sellProduct(String productName, int quantity) {
+        StoreService.load();
+        for (int i = 0; i < Store.productList.size(); i++) {
+            if(Store.productList.get(i).getProductName().contains(productName) &&
+                    quantity<= Store.productList.get(i).getQuantity()){
+                System.out.println("Initial Product");
+                System.out.println(Store.productList.get(i));
+                Store.productList.get(i).setQuantity(Store.productList.get(i).getQuantity()-quantity);
+                System.out.println("Product sold successfully");
+                System.out.println("Remaining product");
+                return Store.productList.get(i);
+            }
+
+        }
+        return null;
     }
-
-
 
     @Override
     public String dispenseReceipt(Customer customer, Products products) {

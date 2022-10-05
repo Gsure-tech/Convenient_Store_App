@@ -21,7 +21,7 @@ class CashierServicesTest {
         Cashier cashier = new Cashier(1,+234849473l, "Abdulganiyu", Gender.MALE,
                 "No 2 college road", Qualifications.BSC, Grade.FIRST_CLASS);
        CashierServices cashierServices = new CashierServices(cashier);
-        Assert.assertEquals("Sold successfully",cashierServices.sellProduct(products));
+        Assert.assertEquals(products,cashierServices.sellProduct("productName",5));
     }
 
 
