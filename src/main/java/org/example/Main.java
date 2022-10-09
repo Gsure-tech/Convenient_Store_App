@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.Exceptions.CashierNotHiredException;
 import org.example.enums.Gender;
 import org.example.enums.Grade;
 import org.example.enums.Qualifications;
@@ -14,13 +15,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CashierNotHiredException {
     Manager manager = new Manager(1,+2347063246807l, "Moses Simon",
             Gender.MALE,"Staff Quarters in staff road");
     manager.setFullName("Musa");
    // Manager manager1 = new Manager();
         Cashier cashier = new Cashier(1,+234849473l, "Abdulganiyu",Gender.MALE,
-                "No 2 college road",Qualifications.BSC,Grade.FIRST_CLASS);
+                "No 2 college road",Qualifications.PHD,Grade.PASS);
 
     //Customer customer1 = new Customer();
         CashierServices cashierServices=new CashierServices(cashier);
@@ -28,7 +29,7 @@ public class Main {
 
 
        Applicant applicant = new Applicant(1,+234849473l, "Salim",Gender.MALE,
-                "No 2 Madugu road",Qualifications.PHD,Grade.FIRST_CLASS);
+                "No 2 Madugu road",Qualifications.BSC,Grade.PASS);
         Customer customer = new Customer(1,+234849473l, "Musa",Gender.MALE,
                 "No 2 college road");
 
@@ -37,14 +38,14 @@ public class Main {
 
        // Products products = customerService.buyProduct("Rice",5);
 
-       // System.out.println(customerService.buyProduct("Rie",15));
+       //System.out.println(customerService.buyProduct("Rice",20));
         //System.out.println(cashierServices.sellProduct("Rice",20));
 
-        System.out.println(cashierServices.dispenseReceipt(customer,"Malt",4));
+        //System.out.println(cashierServices.dispenseReceipt(customer,"Malt",4));
        // System.out.println("hello");
         Leave leave = new Leave(1,12);
         StaffServices staffServices = new StaffServices(cashier);
-        //System.out.println( staffServices.takeLeave(2,9));
+       System.out.println( managerService.hireCashier(applicant));
 
 
     }

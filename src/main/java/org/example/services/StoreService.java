@@ -11,7 +11,7 @@ public class StoreService {
     public static void load() {
 
 
-        String path = "/Users/gsure-tech/IdeaProjects/week-two-sq012-Gsure-tech/src/ProductList - Sheet1.csv";
+        String path = "/Users/gsure-tech/IdeaProjects/week-two-sq012-Gsure-tech/src/ProductLis - Sheet1.csv";
         BufferedReader br;
         String line = "";
         {
@@ -32,7 +32,9 @@ public class StoreService {
 
                 }
             } catch (FileNotFoundException e) {
-                e.printStackTrace();
+               System.out.println("File does not exist");
+               // e.getMessage();
+                //e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }

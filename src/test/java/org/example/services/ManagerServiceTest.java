@@ -1,5 +1,6 @@
 package org.example.services;
 
+import org.example.Exceptions.CashierNotHiredException;
 import org.example.enums.Gender;
 import org.example.enums.Grade;
 import org.example.enums.Qualifications;
@@ -34,7 +35,7 @@ class ManagerServiceTest {
         managerService= new ManagerService(manager);;
     }
 @Test
-    public void managerShouldHireCashier(){
+    public void managerShouldHireCashier() throws CashierNotHiredException {
 
     assertEquals(applicant,managerService.hireCashier(applicant));
 }
