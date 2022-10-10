@@ -1,5 +1,7 @@
 package org.example.services;
 
+import org.example.Exceptions.CustomerOutOfStockException;
+import org.example.Exceptions.ProductNotAvailableException;
 import org.example.interfaces.CustomerInterface;
 import org.example.models.Customer;
 import org.example.models.Products;
@@ -32,26 +34,24 @@ CustomerService implements CustomerInterface {
 //
 //    }
     @Override
-    public Products buyProduct(String productName, int quantity) {
+    public Products buyProduct(String productName, int quantity) throws CustomerOutOfStockException, ProductNotAvailableException {
         StoreService.load();
-        //if(Store.productList.contains(Store.productList.get(2).equals(productName))){
-        //System.out.println(Store.productList.);
-        for (int i = 0; i < Store.productList.size(); i++) {
-            if (Store.productList.get(i).getProductName().equals(productName) && quantity <= Store.productList.get(i).getQuantity() ) {
-                    //System.out.println(Store.productList.get(i));
-                    System.out.println("Product bought successfully");
-                   // Store.productList.get(i).setQuantity(Store.productList.get(i).getQuantity() - quantity);
-                   Store.productList.get(i).setQuantity(quantity);
-                 //   System.out.println("Remaining Product");
-                    return Store.productList.get(i);
 
-                } //else if(quantity > Store.productList.get(i).getQuantity()){
-//                    System.out.println("Your request is unavailable as we have " + Store.productList.get(i).getQuantity()+
-//                            " "+ productName +" left");
-//                   return null;
-//                }
+        for (int i = 0; i < Store.productList.size(); i++) {
+                if (Store.productList.get(i).getProductName().equals(productName)
+                        && quantity <= Store.productList.get(i).getQuantity()) {
+                    System.out.println("Product bought successfully");
+                    Store.productList.get(i).setQuantity(quantity);
+                    Customer.getCustomerCartQueue().add(Store.productList.get(i));
+                   // Customer.getCustomerCartPriority().add(Store.productList.get(i));
+
+                 //   System.out.println(" Customer cart "+Customer.getCustomerCart());
+                    return Store.productList.get(i);
+              }else if(Store.productList.get(i).getProductName().equals(productName)
+                        &&quantity > Store.productList.get(i).getQuantity()){
+                    throw  new CustomerOutOfStockException("Product out of Stock");
+                }
         }
-        System.out.println("Product out of stock");
-        return null;
+        throw new ProductNotAvailableException();
     }
 }

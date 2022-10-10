@@ -1,5 +1,6 @@
 package org.example.services;
 
+import org.example.Exceptions.ProductNotSoldException;
 import org.example.enums.Gender;
 import org.example.enums.Grade;
 import org.example.enums.Qualifications;
@@ -13,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CashierServicesTest {
     @Test
-    public void cashierShouldSell(){
+    public void cashierShouldSell() throws ProductNotSoldException {
         Products products = new Products(1,"drinks","malt",
                 10,3000.0,2013,2021);
         Store.productList.add(products);

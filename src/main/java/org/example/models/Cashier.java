@@ -4,7 +4,7 @@ import org.example.enums.Gender;
 import org.example.enums.Grade;
 import org.example.enums.Qualifications;
 
-public class Cashier extends Customer {
+public class Cashier extends Staff {
 
 
     private Qualifications qualifications;
@@ -15,7 +15,7 @@ public class Cashier extends Customer {
 
     @Override
     public String toString() {
-        return "Cashier{" +"id:" + getId() +" " + "PhoneNumber: " + getPhoneNumber() + " "
+        return "Cashier{" +" " + "PhoneNumber: " + getPhoneNumber() + " "
                +"FullName: "+ getFullName() + " "+ " Gender: " +getGender() + " "+
                  "Address: " + getAddress() +" " +
                 "qualifications=" + qualifications +
@@ -23,12 +23,6 @@ public class Cashier extends Customer {
                 '}';
 
 
-    }
-
-    public Cashier(int id, long phoneNumber, String fullName, Gender gender, String address, Qualifications qualifications, Grade grade) {
-        super(id, phoneNumber, fullName, gender, address);
-        this.qualifications = qualifications;
-        this.grade = grade;
     }
 
     public Cashier(Qualifications qualifications) {
@@ -44,6 +38,18 @@ public class Cashier extends Customer {
     }
 
     public Cashier(Qualifications qualifications, Grade grade) {
+        this.qualifications = qualifications;
+        this.grade = grade;
+    }
+
+    public Cashier(int staffId, Qualifications qualifications, Grade grade) {
+        super(staffId);
+        this.qualifications = qualifications;
+        this.grade = grade;
+    }
+
+    public Cashier(String phoneNumber, String fullName, Gender gender, String address, int staffId, Qualifications qualifications, Grade grade) {
+        super(phoneNumber, fullName, gender, address, staffId);
         this.qualifications = qualifications;
         this.grade = grade;
     }

@@ -1,11 +1,16 @@
 package org.example.services;
 
+import org.example.Exceptions.NoProductBoughtException;
+import org.example.Exceptions.ProductNotSoldException;
 import org.example.enums.Gender;
 import org.example.interfaces.CashierInterface;
 import org.example.models.Cashier;
 import org.example.models.Customer;
 import org.example.models.Products;
 import org.example.models.Store;
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class CashierServices implements CashierInterface {
 
@@ -16,26 +21,8 @@ public class CashierServices implements CashierInterface {
         this.cashier = cashier;
     }
 
-//    @Override
-//    public Products addProduct(Products products) {
-//        Store.productList.add(products);
-//        return products;
-//    }
-
-//    @Override
-//    public Products (Products products) {
-//
-//        //CustomerService customerService = new CustomerService(new Customer(2,+23707493843l,"Emma", Gender.MALE,"No.30 college road"));
-//       CustomerService customerService= new CustomerService();
-//        if(Store.productList.contains(products)){
-//            return "Sold successfully";
-//        }else
-//        return "Product not available";
-//    }
-
-
     @Override
-    public Products sellProduct(String productName, int quantity) {
+    public Products sellProduct(String productName, int quantity) throws ProductNotSoldException {
         StoreService.load();
         for (int i = 0; i < Store.productList.size(); i++) {
             if(Store.productList.get(i).getProductName().contains(productName) &&
@@ -47,16 +34,15 @@ public class CashierServices implements CashierInterface {
                 System.out.println("Remaining product");
                 return Store.productList.get(i);
             }
-
         }
-        return null;
+       throw  new ProductNotSoldException("Cant sell Product");
     }
 
     @Override
-    public String dispenseReceipt(Customer customer, String productName, int quantity) {
+    public String dispenseReceipt(Customer customer, String productName, int quantity) throws NoProductBoughtException {
         StoreService.load();
         for (int i = 0; i < Store.productList.size(); i++) {
-            if(Store.productList.get(i).getProductName().equals(productName)){
+            if(Store.productList.get(i).getProductName().equals(productName) && Store.productList.get(i).getQuantity()>=quantity){
                 Store.productList.get(i).setQuantity(quantity);
             return "******-----RECEIPT-----****** \n" +
                     "Customer Name: " + customer.getFullName() + "\n" +
@@ -67,9 +53,24 @@ public class CashierServices implements CashierInterface {
                     "Manufacture Date: " + Store.productList.get(i).getManufactureYear() + "\n" +
                     "Expiry Date: " + Store.productList.get(i).getExpiryYear() + "\n" +
                     "Total Amount payable: " + Store.productList.get(i).getPrice()*quantity ;
-
             }
         }
-        return "No product bought";
+        throw new NoProductBoughtException("Can't generate receipt");
+
+    }
+
+
+    public void sellBasedOnQueue(Queue<Products>customers) {
+        for (int i = customers.size();i>0; i--) {
+          Products currentProduct = customers.poll();
+          assert currentProduct !=null;
+            System.out.println("Selling " + currentProduct.getProductName());
+        }
+        System.out.println("Product successfully sold");
+    }
+
+
+    public String sellBasedOnPriority() {
+        return null;
     }
 }

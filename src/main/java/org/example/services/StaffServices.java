@@ -1,5 +1,6 @@
 package org.example.services;
 
+import org.example.Exceptions.LeaveNotGrantedException;
 import org.example.interfaces.StaffInterface;
 import org.example.models.Cashier;
 import org.example.models.Customer;
@@ -22,11 +23,10 @@ public class StaffServices implements StaffInterface {
 
 
     @Override
-    public String takeLeave(int startDay, int endDay) {
+    public String takeLeave(int startDay, int endDay) throws LeaveNotGrantedException {
         if(endDay - startDay <= 30){
             return "Leave granted";
         }
-        return" leave cannot be granted as the" +
-                " you as the number of days applied for exceed 30";
+        throw new LeaveNotGrantedException("Leave not granted");
     }
 }

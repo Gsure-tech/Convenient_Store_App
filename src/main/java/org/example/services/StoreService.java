@@ -5,13 +5,16 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StoreService {
+
     // public static void main(String[] args) {
     public static void load() {
 
 
-        String path = "/Users/gsure-tech/IdeaProjects/week-two-sq012-Gsure-tech/src/ProductLis - Sheet1.csv";
+        String path = "/Users/gsure-tech/IdeaProjects/week-two-sq012-Gsure-tech/src/ProductList - Sheet1.csv";
         BufferedReader br;
         String line = "";
         {

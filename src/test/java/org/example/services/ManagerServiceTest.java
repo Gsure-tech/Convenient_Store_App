@@ -25,12 +25,9 @@ class ManagerServiceTest {
     @BeforeEach
     public void setUp(){
 
-       applicant = new Applicant(1,+234849473l, "Abdulganiyu", Gender.MALE,
-                "No 2 college road",Qualifications.BSC, Grade.FIRST_CLASS);
-        cashier2 = new Cashier(1,+234849473l, "Moses", Gender.FEMALE,
-          "No 2 college road",Qualifications.BSC, Grade.FAIL);
-        manager = new Manager(1,+2347063246807l, "Moses Simon",
-                Gender.MALE,"Staff Quarters in staff road");
+       applicant = new Applicant("07079e4094","Simon Moses", Gender.MALE,"No 4 Madunga Road",3323,Qualifications.BSC,Grade.FIRST_CLASS);
+        cashier2 = new Cashier();
+        manager = new Manager("0705466334","General Ibibio",Gender.MALE,"OKhuromi",3244);
 
         managerService= new ManagerService(manager);;
     }

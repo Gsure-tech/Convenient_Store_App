@@ -1,5 +1,6 @@
 package org.example.services;
 
+import org.example.Exceptions.CashierFiredException;
 import org.example.Exceptions.CashierNotHiredException;
 import org.example.enums.Grade;
 import org.example.enums.Qualifications;
@@ -17,17 +18,16 @@ public class ManagerService implements ManagerInterface {
 
     @Override
     public Applicant hireCashier(Applicant applicant) throws CashierNotHiredException {
-       try{
-           if(applicant.getQualifications()!= Qualifications.BSC || applicant.getGrade()!=Grade.FIRST_CLASS){
-          throw new CashierNotHiredException("You are not hired");
-       }else {
-               System.out.println("Congratulations you have been hired as Cashier");
-          return applicant;
-           }
-       } catch (CashierNotHiredException e){
-           System.out.println(e.getMessage());
-       }return null;
+
+        if (applicant.getQualifications() == Qualifications.BSC && applicant.getGrade() == Grade.FIRST_CLASS) {
+            System.out.println("Congratulations you have been hired as Cashier");
+            return applicant;
+            //throw new CashierNotHiredException("You are not hired");
+        } else {
+           throw new CashierNotHiredException();
+        }
     }
+
 
 //    @Override
 //    public Applicant hireCashier(Applicant applicant) throws CashierNotHiredException {
@@ -44,16 +44,18 @@ public class ManagerService implements ManagerInterface {
 
     @Override
     public String fireCashier(Cashier cashier) {
+        try{
+            if(cashier.getGrade()== Grade.FAIL){
+                throw new CashierFiredException("Cashier is fired because of his grade is " + cashier.getGrade());
 
-        if(cashier.getGrade()== Grade.FAIL){
-            return "Cashier is fired because of his grade is " + cashier.getGrade();
         }else if(cashier.getGrade()==Grade.PASS){
-
-            return  "Cashier is fired because of his grade is " + cashier.getGrade();
+                    throw new CashierFiredException("Cashier is fired because of his grade is " + cashier.getGrade());
+        }else{
+                return "Cashier is not fired";
+            }
+        }catch (CashierFiredException e){
+            System.out.println(e.getMessage());
         }
-            else
-        return "null";
+       return null;
     }
-
-
 }

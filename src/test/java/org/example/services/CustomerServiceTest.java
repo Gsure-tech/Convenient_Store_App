@@ -1,5 +1,7 @@
 package org.example.services;
 
+import org.example.Exceptions.CustomerOutOfStockException;
+import org.example.Exceptions.ProductNotAvailableException;
 import org.example.enums.Gender;
 import org.example.models.Customer;
 import org.example.models.Products;
@@ -18,12 +20,12 @@ class CustomerServiceTest {
     @BeforeEach
     public void setUp(){
 
-    customer = new Customer(1,+234849473l, "Abdulganiyu", Gender.MALE,
+    customer = new Customer("234849473l", "Abdulganiyu", Gender.MALE,
                 "No 2 college road");
     customerService = new CustomerService(customer);
     }
     @Test
-    public void customerShouldBuy(){
+    public void customerShouldBuy() throws CustomerOutOfStockException, ProductNotAvailableException {
 
         assertEquals(products,customerService.buyProduct(productName,quantity));
     }

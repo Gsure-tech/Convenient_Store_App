@@ -5,21 +5,32 @@ import org.example.enums.Grade;
 import org.example.enums.Qualifications;
 
 public class Applicant extends Person{
+    private int applicantId;
     private Qualifications qualifications;
     private Grade grade;
 
     public Applicant() {
     }
 
-    public Applicant(int id, long phoneNumber, String fullName, Gender gender, String address, Qualifications qualifications, Grade grade) {
-        super(id, phoneNumber, fullName, gender, address);
+    public Applicant(int applicantId, Qualifications qualifications, Grade grade) {
+        this.applicantId = applicantId;
         this.qualifications = qualifications;
         this.grade = grade;
     }
 
-    public Applicant(Qualifications qualifications, Grade grade) {
+    public Applicant(String phoneNumber, String fullName, Gender gender, String address, int applicantId, Qualifications qualifications, Grade grade) {
+        super(phoneNumber, fullName, gender, address);
+        this.applicantId = applicantId;
         this.qualifications = qualifications;
         this.grade = grade;
+    }
+
+    public int getApplicantId() {
+        return applicantId;
+    }
+
+    public void setApplicantId(int applicantId) {
+        this.applicantId = applicantId;
     }
 
     public Qualifications getQualifications() {
@@ -41,7 +52,7 @@ public class Applicant extends Person{
     @Override
     public String toString() {
         return "Applicant{" +
-                " id=" + getId() +
+                " id=" + applicantId +
                 ", phoneNumber=" + getPhoneNumber() +
                 ", fullName='" + getFullName() + '\'' +
                 ", gender=" + getGender() +
