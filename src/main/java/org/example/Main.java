@@ -34,12 +34,11 @@ public class Main {
         CustomerService customerService2 = new CustomerService(tega);
         CustomerService customerService3 = new CustomerService(aisha);
 
-        customerService.buyProduct("Malt", 1);
+        customerService.buyProduct("Malt", 4);
         customerService1.buyProduct("Rice", 2);
         customerService2.buyProduct("Coffee", 3);
         customerService3.buyProduct("Coffee", 4);
         customerService3.buyProduct("Malt", 5);
-
 
         List<Customer> allCustomers = new ArrayList<>();
         allCustomers.add(musa);
@@ -47,7 +46,8 @@ public class Main {
         allCustomers.add(john);
         allCustomers.add(aisha);
         CashierServices cashierServices1 = new CashierServices(cashier);
-        cashierServices1.sellBasedOnPriority(allCustomers);
+        //cashierServices1.sellBasedOnPriority(allCustomers);
+        cashierServices1.sellBasedOnQueue(allCustomers);
 
        // StoreService.load();
 

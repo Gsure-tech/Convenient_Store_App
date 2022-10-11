@@ -58,26 +58,41 @@ public class CashierServices implements CashierInterface {
 
     }
 
-
-    public void sellBasedOnQueue(Queue<Products>customers) {
-        for (int i = customers.size();i>0; i--) {
-          Products currentProduct = customers.poll();
-          assert currentProduct !=null;
-            System.out.println("Selling " + currentProduct.getProductName());
-        }
-        System.out.println("Product successfully sold");
-    }
-
-
+    @Override
     public void sellBasedOnPriority(List<Customer> myCustomer) {
         Queue<Customer> myQueue = new PriorityQueue<>(new CustomerComparator());
         for (int i = 0; i <myCustomer.size() ; i++) {
             myQueue.add(myCustomer.get(i));
 
         }
-            while (!myQueue.isEmpty()){
-                System.out.println("Selling to " + myQueue.poll());
-            }
+        while (!myQueue.isEmpty()){
+            System.out.println("Selling to " + myQueue.poll());
+        }
 
     }
+
+    @Override
+    public void sellBasedOnQueue(List<Customer> myCustomer) {
+        Queue<Customer> customerQueue = new LinkedList<>();
+        for (int i =0; i< myCustomer.size(); i++) {
+            customerQueue.add(myCustomer.get(i));
+           //Customer currentCustomer = myCustomer.poll();
+            while (!customerQueue.isEmpty()) {
+                System.out.println("Selling " + customerQueue.poll());
+            }
+        }
+        System.out.println("Product successfully sold");
+    }
+
+
+//    public void sellBasedOnQueue(Queue<Products>customers) {
+//        for (int i = customers.size();i>0; i--) {
+//          Products currentProduct = customers.poll();
+//          assert currentProduct !=null;
+//            System.out.println("Selling " + currentProduct.getProductName());
+//        }
+//        System.out.println("Product successfully sold");
+//    }
+
+
 }
