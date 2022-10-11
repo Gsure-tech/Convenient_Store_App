@@ -12,8 +12,6 @@ public class StoreService {
 
     // public static void main(String[] args) {
     public static void load() {
-
-
         String path = "/Users/gsure-tech/IdeaProjects/week-two-sq012-Gsure-tech/src/ProductList - Sheet1.csv";
         BufferedReader br;
         String line = "";

@@ -3,9 +3,8 @@ package org.example.models;
 import org.example.enums.Gender;
 
 public abstract class Person {
-
-    private String phoneNumber;
     private String fullName;
+    private String phoneNumber;
     private Gender gender;
     private String address;
 
@@ -13,9 +12,9 @@ public abstract class Person {
     public Person() {
     }
 
-    public Person(String phoneNumber, String fullName, Gender gender, String address) {
-        this.phoneNumber = phoneNumber;
+    public Person(String fullName,String phoneNumber,  Gender gender, String address) {
         this.fullName = fullName;
+        this.phoneNumber = phoneNumber;
         this.gender = gender;
         this.address = address;
     }

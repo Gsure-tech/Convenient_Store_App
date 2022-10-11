@@ -4,12 +4,11 @@ import org.example.Exceptions.NoProductBoughtException;
 import org.example.Exceptions.ProductNotSoldException;
 import org.example.enums.Gender;
 import org.example.interfaces.CashierInterface;
-import org.example.models.Cashier;
-import org.example.models.Customer;
-import org.example.models.Products;
-import org.example.models.Store;
+import org.example.models.*;
 
 import java.util.LinkedList;
+import java.util.List;
+import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class CashierServices implements CashierInterface {
@@ -70,7 +69,15 @@ public class CashierServices implements CashierInterface {
     }
 
 
-    public String sellBasedOnPriority() {
-        return null;
+    public void sellBasedOnPriority(List<Customer> myCustomer) {
+        Queue<Customer> myQueue = new PriorityQueue<>(new CustomerComparator());
+        for (int i = 0; i <myCustomer.size() ; i++) {
+            myQueue.add(myCustomer.get(i));
+
+        }
+            while (!myQueue.isEmpty()){
+                System.out.println("Selling to " + myQueue.poll());
+            }
+
     }
 }

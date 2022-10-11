@@ -7,6 +7,9 @@ import org.example.models.Customer;
 import org.example.models.Products;
 import org.example.models.Store;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class
 CustomerService implements CustomerInterface {
     private  Customer customer;
@@ -34,19 +37,24 @@ CustomerService implements CustomerInterface {
 //
 //    }
     @Override
-    public Products buyProduct(String productName, int quantity) throws CustomerOutOfStockException, ProductNotAvailableException {
+    public List<Products> buyProduct(String productName, int quantity) throws CustomerOutOfStockException, ProductNotAvailableException {
         StoreService.load();
-
+    int customerQuantity = 0;
+    List<Products>myProducts = new ArrayList<>();
         for (int i = 0; i < Store.productList.size(); i++) {
                 if (Store.productList.get(i).getProductName().equals(productName)
-                        && quantity <= Store.productList.get(i).getQuantity()) {
-                    System.out.println("Product bought successfully");
-                    Store.productList.get(i).setQuantity(quantity);
-                    Customer.getCustomerCartQueue().add(Store.productList.get(i));
+                        && quantity <= Store.productList.get(i).getQuantity()){
+                   // Store.productList.get(i).setQuantity(quantity);
+                    myProducts.add(Store.productList.get(i));
+                 System.out.println( Store.productList.get(i).getProductName() + " added to cart");
+                    customer.setCustomerCart(myProducts);
+                   // customer.getCustomerCart().add(Store.productList.get(i));
                    // Customer.getCustomerCartPriority().add(Store.productList.get(i));
+                    customer.setQuantity(customer.getQuantity() + quantity);
+                    Store.productList.get(i).setQuantity(Store.productList.get(i).getQuantity()- quantity);
 
                  //   System.out.println(" Customer cart "+Customer.getCustomerCart());
-                    return Store.productList.get(i);
+                    return customer.getCustomerCart();
               }else if(Store.productList.get(i).getProductName().equals(productName)
                         &&quantity > Store.productList.get(i).getQuantity()){
                     throw  new CustomerOutOfStockException("Product out of Stock");

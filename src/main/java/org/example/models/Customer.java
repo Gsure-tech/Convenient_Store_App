@@ -4,39 +4,87 @@ import java.lang.invoke.StringConcatFactory;
 import java.util.*;
 
 public class Customer extends Person {
-    private static Queue<Products> customerCartQueue = new LinkedList<>();
-    private static PriorityQueue<Products>customerCartPriority = new PriorityQueue<>();
+    private int  quantity =0;
+    private double customerWallet;
+
+   private List<Products> customerCart ;
+
+
+
+    //    private static Queue<Products> customerCartQueue = new LinkedList<>();
+  //  private static PriorityQueue<Products>customerCartPriority = new PriorityQueue<>();
 
    // private static List<Products>customerCart = new ArrayList<>();
-
-    public static PriorityQueue<Products> getCustomerCartPriority() {
-        return customerCartPriority;
+   public Customer() {
+   }
+    public Customer(int quantity, double customerWallet, List<Products> customerCart) {
+        this.quantity = quantity;
+        this.customerWallet = customerWallet;
+        this.customerCart = customerCart;
     }
 
-    public static void setCustomerCartPriority(PriorityQueue<Products> customerCartPriority) {
-        Customer.customerCartPriority = customerCartPriority;
+    public Customer(String fullName,String phoneNumber,  Gender gender, String address, double customerWallet) {
+        super(fullName,phoneNumber,  gender, address);
+        this.customerWallet = customerWallet;
+
     }
 
-    public static Queue<Products> getCustomerCartQueue() {
-        return customerCartQueue;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public static void setCustomerCartQueue(Queue<Products> customerCartQueue) {
-        Customer.customerCartQueue = customerCartQueue;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
-    public Customer() {
+    public double getCustomerWallet() {
+        return customerWallet;
     }
 
-
-    public Customer(String phoneNumber, String fullName, Gender gender, String address) {
-        super(phoneNumber, fullName, gender, address);
+    public void setCustomerWallet(double customerWallet) {
+        this.customerWallet = customerWallet;
     }
 
+    public List<Products> getCustomerCart() {
+        return customerCart;
+    }
+
+    public void setCustomerCart(List<Products> customerCart) {
+        this.customerCart = customerCart;
+    }
+//    public static PriorityQueue<Products> getCustomerCartPriority() {
+//        return customerCartPriority;
+//    }
+//
+//    public static void setCustomerCartPriority(PriorityQueue<Products> customerCartPriority) {
+//        Customer.customerCartPriority = customerCartPriority;
+//    }
+//
+//    public static Queue<Products> getCustomerCartQueue() {
+//        return customerCartQueue;
+//    }
+//
+//    public static void setCustomerCartQueue(Queue<Products> customerCartQueue) {
+//        Customer.customerCartQueue = customerCartQueue;
+//    }
+
+
+    @Override
     public String toString() {
-        return "Customer{" +" " + "PhoneNumber: " + getPhoneNumber() + " "
-                +"FullName: "+ getFullName() + " "+ " Gender: " +getGender() + " "+
-                "Address: " + getAddress() +" " +
-                '}';
+        return "Customer{"  +
+        " '" + getFullName() + '\'' +
+                "quantity=" + quantity +
+                ", customerWallet=" + customerWallet +
+                ", customerCart=" + customerCart +
+                "} ";
     }
+
+
+//    @Override
+//    public int compareTo(Products products) {
+//        if(products.getQuantity()> products.getQuantity()) {
+//            return 1;
+//        }
+//        return 0;
+//    }
 }

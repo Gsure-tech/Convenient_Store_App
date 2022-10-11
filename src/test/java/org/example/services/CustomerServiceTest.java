@@ -20,8 +20,7 @@ class CustomerServiceTest {
     @BeforeEach
     public void setUp(){
 
-    customer = new Customer("234849473l", "Abdulganiyu", Gender.MALE,
-                "No 2 college road");
+    customer = new Customer("Musa","070627267",Gender.MALE,"No 20, express way",2000.0);
     customerService = new CustomerService(customer);
     }
     @Test
