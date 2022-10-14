@@ -24,7 +24,7 @@ public class StaffServices implements StaffInterface {
 
     @Override
     public String takeLeave(int startDay, int endDay) throws LeaveNotGrantedException {
-        if(endDay - startDay <= 30){
+        if(endDay - startDay <= 10){
             return "Leave granted";
         }
         throw new LeaveNotGrantedException("Leave not granted");

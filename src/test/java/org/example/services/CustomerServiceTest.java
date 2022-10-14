@@ -22,6 +22,8 @@ class CustomerServiceTest {
 
     customer = new Customer("Musa","070627267",Gender.MALE,"No 20, express way",2000.0);
     customerService = new CustomerService(customer);
+    productName= "Rice";
+    quantity =4;
     }
     @Test
     public void customerShouldBuy() throws CustomerOutOfStockException, ProductNotAvailableException {

@@ -39,14 +39,15 @@ public class Main {
         customerService2.buyProduct("Coffee", 3);
         customerService3.buyProduct("Coffee", 4);
         customerService3.buyProduct("Malt", 5);
-
+        System.out.println();
         List<Customer> allCustomers = new ArrayList<>();
         allCustomers.add(musa);
         allCustomers.add(tega);
         allCustomers.add(john);
         allCustomers.add(aisha);
         CashierServices cashierServices1 = new CashierServices(cashier);
-        //cashierServices1.sellBasedOnPriority(allCustomers);
+        cashierServices1.sellBasedOnPriority(allCustomers);
+        System.out.println();
         cashierServices1.sellBasedOnQueue(allCustomers);
 
        // StoreService.load();

@@ -60,6 +60,7 @@ public class CashierServices implements CashierInterface {
 
     @Override
     public void sellBasedOnPriority(List<Customer> myCustomer) {
+        System.out.println("Selling base on highest quantity priority");
         Queue<Customer> myQueue = new PriorityQueue<>(new CustomerComparator());
         for (int i = 0; i <myCustomer.size() ; i++) {
             myQueue.add(myCustomer.get(i));
@@ -73,13 +74,18 @@ public class CashierServices implements CashierInterface {
 
     @Override
     public void sellBasedOnQueue(List<Customer> myCustomer) {
+
+        System.out.println("Selling base on FIFO");
         Queue<Customer> customerQueue = new LinkedList<>();
         for (int i =0; i< myCustomer.size(); i++) {
             customerQueue.add(myCustomer.get(i));
+            assert customerQueue !=null;
+            System.out.println("Selling " + customerQueue.poll());
+
            //Customer currentCustomer = myCustomer.poll();
-            while (!customerQueue.isEmpty()) {
-                System.out.println("Selling " + customerQueue.poll());
-            }
+//            while (!customerQueue.isEmpty()) {
+//                System.out.println("Selling " + customerQueue.poll());
+//            }
         }
         System.out.println("Product successfully sold");
     }

@@ -46,7 +46,7 @@ CustomerService implements CustomerInterface {
                         && quantity <= Store.productList.get(i).getQuantity()){
                    // Store.productList.get(i).setQuantity(quantity);
                     myProducts.add(Store.productList.get(i));
-                 System.out.println( Store.productList.get(i).getProductName() + " added to cart");
+                 System.out.println( Store.productList.get(i).getProductName() + " added to customer cart");
                     customer.setCustomerCart(myProducts);
                    // customer.getCustomerCart().add(Store.productList.get(i));
                    // Customer.getCustomerCartPriority().add(Store.productList.get(i));
