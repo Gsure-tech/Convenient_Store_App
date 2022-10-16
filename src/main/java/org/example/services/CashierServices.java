@@ -20,22 +20,44 @@ public class CashierServices implements CashierInterface {
         this.cashier = cashier;
     }
 
+
     @Override
-    public Products sellProduct(String productName, int quantity) throws ProductNotSoldException {
+    public synchronized Products sellProduct(String productName, int quantity) throws ProductNotSoldException {
         StoreService.load();
         for (int i = 0; i < Store.productList.size(); i++) {
             if(Store.productList.get(i).getProductName().contains(productName) &&
                     quantity<= Store.productList.get(i).getQuantity()){
-                System.out.println("Initial Product");
-                System.out.println(Store.productList.get(i));
+              //  System.out.println("Initial Product");
+               // System.out.println(Store.productList.get(i));
                 Store.productList.get(i).setQuantity(Store.productList.get(i).getQuantity()-quantity);
-                System.out.println("Product sold successfully");
-                System.out.println("Remaining product");
+                System.out.println( quantity + " " + productName +  " sold successfully");
+               // System.out.println("Remaining product");
+
+                System.out.println(Store.productList.get(i).getQuantity() + " " + productName +  " left");
+                System.out.println();
                 return Store.productList.get(i);
             }
         }
        throw  new ProductNotSoldException("Cant sell Product");
     }
+
+
+//    @Override
+//    public List<Products> sellProduct(List<Customer> myCustomer) throws ProductNotSoldException {
+//        StoreService.load();
+//        for (int i = 0; i < Store.productList.size(); i++) {
+//            if(Store.productList.get(i).getProductName().contains(myCustomer) &&
+//                    quantity<= Store.productList.get(i).getQuantity()){
+//                System.out.println("Initial Product");
+//                System.out.println(Store.productList.get(i));
+//                Store.productList.get(i).setQuantity(Store.productList.get(i).getQuantity()-quantity);
+//                System.out.println("Product sold successfully");
+//                System.out.println("Remaining product");
+//                return Store.productList.get(i);
+//            }
+//        }
+//        throw  new ProductNotSoldException("Cant sell Product");
+//    }
 
     @Override
     public String dispenseReceipt(Customer customer, String productName, int quantity) throws NoProductBoughtException {
