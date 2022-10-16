@@ -39,14 +39,13 @@ CustomerService implements CustomerInterface {
     @Override
     public List<Products> buyProduct(String productName, int quantity) throws CustomerOutOfStockException, ProductNotAvailableException {
         StoreService.load();
-    int customerQuantity = 0;
-    List<Products>myProducts = new ArrayList<>();
+   // int customerQuantity = 0;
+    List<Products> myProducts = new ArrayList<>();
         for (int i = 0; i < Store.productList.size(); i++) {
                 if (Store.productList.get(i).getProductName().equals(productName)
                         && quantity <= Store.productList.get(i).getQuantity()){
-                   // Store.productList.get(i).setQuantity(quantity);
-                    myProducts.add(Store.productList.get(i));
-                 System.out.println( Store.productList.get(i).getProductName() + " added to customer cart");
+                        myProducts.add(Store.productList.get(i));
+                     System.out.println( Store.productList.get(i).getProductName() + " added to customer cart");
                     customer.setCustomerCart(myProducts);
                    // customer.getCustomerCart().add(Store.productList.get(i));
                    // Customer.getCustomerCartPriority().add(Store.productList.get(i));

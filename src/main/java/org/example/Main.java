@@ -48,7 +48,7 @@ public class Main {
         CashierServices cashierServices1 = new CashierServices(cashier);
         cashierServices1.sellBasedOnPriority(allCustomers);
         System.out.println();
-        cashierServices1.sellBasedOnQueue(allCustomers);
+        //cashierServices1.sellBasedOnQueue(allCustomers);
 
        // StoreService.load();
 
