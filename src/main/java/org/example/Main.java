@@ -19,9 +19,9 @@ public class Main {
     public static void main(String[] args) throws CashierNotHiredException, CustomerOutOfStockException, NoProductBoughtException, ProductNotSoldException, ProductNotAvailableException {
     Manager manager = new Manager();
     manager.setFullName("Musa");
-
+     Cashier simon  = new Cashier("0703344234","Simon",Gender.MALE,"Mabel Street Alausa",12,Qualifications.BSC,Grade.FIRST_CLASS);
         Cashier cashier = new Cashier();
-        CashierServices cashierServices=new CashierServices(cashier);
+        CashierServices cashierServices=new CashierServices(simon);
         ManagerService managerService = new ManagerService(manager);
 
         Applicant applicant = new Applicant("3490485999","AHMAD MUSA",Gender.MALE,"No 14,Mungo park",2223,Qualifications.BSC,Grade.FIRST_CLASS);
@@ -58,12 +58,12 @@ public class Main {
 //        thread2.start();
 //        thread3.start();
 
-        SellProductThread thread1 = new SellProductThread(cashierServices1,"Malt",18);
-        SellProductThread thread2 = new SellProductThread(cashierServices1,"Malt",2);
-        SellProductThread thread3 = new SellProductThread(cashierServices1,"Malt",4);
+        SellProductThread thread1 = new SellProductThread(cashierServices,"Malt",12);
+        SellProductThread thread2 = new SellProductThread(cashierServices,"Malt",10);
+        SellProductThread thread3 = new SellProductThread(cashierServices,"Malt",8);
         thread1.start();
         thread2.start();
-        thread3.start();
+       thread3.start();
 
       //System.out.println(customerService2.buyProduct("Malt",21));
         System.out.println();

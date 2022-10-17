@@ -15,6 +15,7 @@ public class CashierServices implements CashierInterface {
 
     private final Cashier cashier;
 
+
     public CashierServices(Cashier cashier) {
 
         this.cashier = cashier;
@@ -23,18 +24,23 @@ public class CashierServices implements CashierInterface {
 
     @Override
     public synchronized Products sellProduct(String productName, int quantity) throws ProductNotSoldException {
+
         StoreService.load();
+
         for (int i = 0; i < Store.productList.size(); i++) {
+             int productQuantity = Store.productList.get(i).getQuantity();
             if(Store.productList.get(i).getProductName().contains(productName) &&
                     quantity<= Store.productList.get(i).getQuantity()){
               //  System.out.println("Initial Product");
                // System.out.println(Store.productList.get(i));
-                Store.productList.get(i).setQuantity(Store.productList.get(i).getQuantity()-quantity);
-                System.out.println( quantity + " " + productName +  " sold successfully");
+               Store.productList.get(i).setQuantity(Store.productList.get(i).getQuantity()-quantity);
+
+                        System.out.println( quantity + " " + productName +  " sold successfully");
                // System.out.println("Remaining product");
 
                 System.out.println(Store.productList.get(i).getQuantity() + " " + productName +  " left");
                 System.out.println();
+
                 return Store.productList.get(i);
             }
         }

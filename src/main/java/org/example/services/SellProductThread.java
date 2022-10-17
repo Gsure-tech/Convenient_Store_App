@@ -1,5 +1,7 @@
 package org.example.services;
 
+import org.example.Exceptions.CustomerOutOfStockException;
+import org.example.Exceptions.ProductNotAvailableException;
 import org.example.Exceptions.ProductNotSoldException;
 
 public class SellProductThread extends Thread {
@@ -13,12 +15,11 @@ public class SellProductThread extends Thread {
         this.quantity = quantity;
     }
 
-    @Override
     public void run() {
         try {
             cashierServices.sellProduct(productName,quantity);
         } catch (ProductNotSoldException e) {
-           e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 }
