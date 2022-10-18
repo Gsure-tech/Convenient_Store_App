@@ -1,6 +1,6 @@
 package org.example.services;
 
-import org.example.Exceptions.CustomerOutOfStockException;
+import org.example.Exceptions.ProductOutOfStockException;
 import org.example.Exceptions.ProductNotAvailableException;
 import org.example.interfaces.CustomerInterface;
 import org.example.models.Customer;
@@ -37,7 +37,7 @@ CustomerService implements CustomerInterface {
 //
 //    }
     @Override
-    public synchronized List<Products> buyProduct(String productName, int quantity) throws CustomerOutOfStockException, ProductNotAvailableException {
+    public synchronized List<Products> buyProduct(String productName, int quantity) throws ProductOutOfStockException, ProductNotAvailableException {
         StoreService.load();
    // int customerQuantity = 0;
     List<Products> myProducts = new ArrayList<>();
@@ -56,7 +56,7 @@ CustomerService implements CustomerInterface {
                     return customer.getCustomerCart();
               }else if(Store.productList.get(i).getProductName().equals(productName)
                         &&quantity > Store.productList.get(i).getQuantity()){
-                    throw  new CustomerOutOfStockException("Product out of Stock");
+                    throw  new ProductOutOfStockException("Product out of Stock");
                 }
         }
         throw new ProductNotAvailableException();

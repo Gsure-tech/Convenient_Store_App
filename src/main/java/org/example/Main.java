@@ -7,16 +7,8 @@ import org.example.enums.Qualifications;
 import org.example.models.*;
 import org.example.services.*;
 
-import javax.swing.*;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 public class Main {
-    public static void main(String[] args) throws CashierNotHiredException, CustomerOutOfStockException, NoProductBoughtException, ProductNotSoldException, ProductNotAvailableException {
+    public static void main(String[] args) throws CashierNotHiredException, ProductOutOfStockException, NoProductBoughtException, ProductNotSoldException, ProductNotAvailableException {
     Manager manager = new Manager();
     manager.setFullName("Musa");
      Cashier simon  = new Cashier("0703344234","Simon",Gender.MALE,"Mabel Street Alausa",12,Qualifications.BSC,Grade.FIRST_CLASS);
@@ -58,12 +50,12 @@ public class Main {
 //        thread2.start();
 //        thread3.start();
 
-        SellProductThread thread1 = new SellProductThread(cashierServices,"Malt",12);
-        SellProductThread thread2 = new SellProductThread(cashierServices,"Malt",10);
-        SellProductThread thread3 = new SellProductThread(cashierServices,"Malt",8);
+        SellProductThread thread1 = new SellProductThread(cashierServices,"Malt",15);
+        SellProductThread thread2 = new SellProductThread(cashierServices,"Malt",1);
+        SellProductThread thread3 = new SellProductThread(cashierServices,"Malt",5);
         thread1.start();
         thread2.start();
-       thread3.start();
+        thread3.start();
 
       //System.out.println(customerService2.buyProduct("Malt",21));
         System.out.println();

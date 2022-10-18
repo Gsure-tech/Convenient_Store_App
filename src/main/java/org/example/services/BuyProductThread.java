@@ -1,8 +1,7 @@
 package org.example.services;
 
-import org.example.Exceptions.CustomerOutOfStockException;
+import org.example.Exceptions.ProductOutOfStockException;
 import org.example.Exceptions.ProductNotAvailableException;
-import org.example.models.Customer;
 
 
 public class BuyProductThread extends Thread {
@@ -20,7 +19,7 @@ public class BuyProductThread extends Thread {
     public void run() {
         try {
             customerService.buyProduct(productName,quantity);
-        } catch (CustomerOutOfStockException e) {
+        } catch (ProductOutOfStockException e) {
             throw new RuntimeException(e);
         } catch (ProductNotAvailableException e) {
             throw new RuntimeException(e);

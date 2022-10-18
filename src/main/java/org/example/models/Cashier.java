@@ -4,6 +4,8 @@ import org.example.enums.Gender;
 import org.example.enums.Grade;
 import org.example.enums.Qualifications;
 
+import java.util.List;
+
 public class Cashier extends Staff {
 
 
@@ -12,6 +14,8 @@ public class Cashier extends Staff {
     public Cashier() {
         super();
     }
+    List<Products>customerBag;
+
 
     @Override
     public String toString() {
@@ -23,6 +27,14 @@ public class Cashier extends Staff {
                 '}';
 
 
+    }
+
+    public List<Products> getCustomerBag() {
+        return customerBag;
+    }
+
+    public void setCustomerBag(List<Products> customerBag) {
+        this.customerBag = customerBag;
     }
 
     public Cashier(Qualifications qualifications) {

@@ -1,11 +1,10 @@
 package org.example.services;
 
-import org.example.Exceptions.CustomerOutOfStockException;
+import org.example.Exceptions.ProductOutOfStockException;
 import org.example.Exceptions.ProductNotAvailableException;
 import org.example.enums.Gender;
 import org.example.models.Customer;
 import org.example.models.Products;
-import org.example.models.Store;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -26,7 +25,7 @@ class CustomerServiceTest {
     quantity =4;
     }
     @Test
-    public void customerShouldBuy() throws CustomerOutOfStockException, ProductNotAvailableException {
+    public void customerShouldBuy() throws ProductOutOfStockException, ProductNotAvailableException {
 
         assertEquals(products,customerService.buyProduct(productName,quantity));
     }

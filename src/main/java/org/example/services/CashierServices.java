@@ -1,8 +1,8 @@
 package org.example.services;
 
+import org.example.Exceptions.ProductOutOfStockException;
 import org.example.Exceptions.NoProductBoughtException;
 import org.example.Exceptions.ProductNotSoldException;
-import org.example.enums.Gender;
 import org.example.interfaces.CashierInterface;
 import org.example.models.*;
 
@@ -23,7 +23,7 @@ public class CashierServices implements CashierInterface {
 
 
     @Override
-    public synchronized Products sellProduct(String productName, int quantity) throws ProductNotSoldException {
+    public synchronized Products sellProduct(String productName, int quantity) throws ProductNotSoldException, ProductOutOfStockException {
 
         StoreService.load();
 
@@ -42,6 +42,9 @@ public class CashierServices implements CashierInterface {
                 System.out.println();
 
                 return Store.productList.get(i);
+            }else if(Store.productList.get(i).getProductName().equals(productName)
+                    &&quantity > Store.productList.get(i).getQuantity()){
+                throw  new ProductOutOfStockException("Product out of Stock");
             }
         }
        throw  new ProductNotSoldException("Cant sell Product");
