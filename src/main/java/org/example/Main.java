@@ -9,6 +9,9 @@ import org.example.services.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class Main {
     public static void main(String[] args) throws CashierNotHiredException, ProductOutOfStockException, NoProductBoughtException, ProductNotSoldException, ProductNotAvailableException {
@@ -35,8 +38,11 @@ public class Main {
         customerService3.buyProduct("Coffee", 4);
         customerService3.buyProduct("Malt", 5);
 
+       System.out.println("Musa: "+musa.getCustomerCart());
+
         System.out.println();
-        List<Customer> allCustomers = new ArrayList<>();
+       // List<Customer> allCustomers = new ArrayList<>();
+        BlockingQueue<Customer> allCustomers = new LinkedBlockingQueue<>();
         allCustomers.add(musa);
         allCustomers.add(tega);
         allCustomers.add(john);

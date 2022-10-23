@@ -121,11 +121,12 @@ public class CashierServices implements CashierInterface {
     @Override
     public synchronized void sellProduct(List<Customer> myCustomer) {
 
-       // System.out.println(customer.getCustomerCart().get(0));
+//        System.out.println(customer.getCustomerCart().get(0));
 
        // System.out.println("Selling ");
         List<Customer> myCustomers = new ArrayList<>();
         for (int i =0; i< myCustomer.size(); i++) {
+            System.out.println(myCustomer.get(i).getFullName()+" cart: "+myCustomer.get(i).getCustomerCart());
             myCustomers.add(myCustomer.get(i));
             assert myCustomers  !=null;
             myCustomers.remove(myCustomer.get(i));
@@ -137,7 +138,11 @@ public class CashierServices implements CashierInterface {
         }
         System.out.println("Product successfully sold");
     }
+    public synchronized void sellProductTo(Customer customer) {
+        //  System.out.println(customer.getFullName()+" cart: "+ customer.getCustomerCart());
 
+       // System.out.println("Product successfully sold");
+        }
 
 //    public void sellBasedOnQueue(Queue<Products>customers) {
 //        for (int i = customers.size();i>0; i--) {
@@ -146,7 +151,5 @@ public class CashierServices implements CashierInterface {
 //            System.out.println("Selling " + currentProduct.getProductName());
 //        }
 //        System.out.println("Product successfully sold");
-//    }
-
 
 }
