@@ -2,23 +2,24 @@ package org.example.services;
 
 import org.example.Exceptions.ProductOutOfStockException;
 import org.example.Exceptions.ProductNotSoldException;
+import org.example.models.Customer;
+
+import java.util.List;
 
 public class SellProductThread extends Thread {
     private CashierServices cashierServices;
-    private String productName;
-    private int quantity;
+    private List<Customer> myCustomer;
+//    private String productName;
+//    private int quantity;
 
-    public SellProductThread(CashierServices cashierServices, String productName, int quantity) {
+
+    public SellProductThread(CashierServices cashierServices, List<Customer> myCustomer) {
         this.cashierServices = cashierServices;
-        this.productName = productName;
-        this.quantity = quantity;
+        this.myCustomer = myCustomer;
     }
 
     public void run() {
-        try {
-            cashierServices.sellProduct(productName,quantity);
-        } catch (ProductNotSoldException | ProductOutOfStockException e) {
-            throw new RuntimeException(e);
-        }
+        System.out.println(Thread.currentThread().getName() + " is selling");
+        cashierServices.sellProduct(myCustomer);
     }
 }

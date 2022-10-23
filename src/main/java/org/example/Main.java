@@ -7,6 +7,9 @@ import org.example.enums.Qualifications;
 import org.example.models.*;
 import org.example.services.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) throws CashierNotHiredException, ProductOutOfStockException, NoProductBoughtException, ProductNotSoldException, ProductNotAvailableException {
     Manager manager = new Manager();
@@ -23,25 +26,26 @@ public class Main {
         Customer aisha = new Customer("Aisha","070627267",Gender.FEMALE,"No 20, express way",4000.0);
        // Products camera = new Products(1,"Electronics","camera",7,200,2012,2022);
         CustomerService customerService = new CustomerService(musa);
-//        CustomerService customerService1 = new CustomerService(john);
-//        CustomerService customerService2 = new CustomerService(tega);
-//        CustomerService customerService3 = new CustomerService(aisha);
-//        customerService.buyProduct("Malt", 4);
-//        customerService1.buyProduct("Rice", 2);
-//        customerService2.buyProduct("Coffee", 3);
-//        customerService3.buyProduct("Coffee", 4);
-//        customerService3.buyProduct("Malt", 5);
-//
-//        System.out.println();
-//        List<Customer> allCustomers = new ArrayList<>();
-//        allCustomers.add(musa);
-//        allCustomers.add(tega);
-//        allCustomers.add(john);
-//        allCustomers.add(aisha);
-       CashierServices cashierServices1 = new CashierServices(cashier);
+        CustomerService customerService1 = new CustomerService(john);
+        CustomerService customerService2 = new CustomerService(tega);
+        CustomerService customerService3 = new CustomerService(aisha);
+        customerService.buyProduct("Malt", 4);
+        customerService1.buyProduct("Rice", 2);
+        customerService2.buyProduct("Coffee", 3);
+        customerService3.buyProduct("Coffee", 4);
+        customerService3.buyProduct("Malt", 5);
+
+        System.out.println();
+        List<Customer> allCustomers = new ArrayList<>();
+        allCustomers.add(musa);
+        allCustomers.add(tega);
+        allCustomers.add(john);
+        allCustomers.add(aisha);
+        CashierServices cashierServices1 = new CashierServices(cashier);
+        //cashierServices1.sellProduct(allCustomers);
 //        cashierServices1.sellBasedOnPriority(allCustomers);
 //        System.out.println(cashierServices1.sellProduct("Malt",3));
-
+//
 //       BuyProductThread thread1 = new BuyProductThread(customerService,"Malt",17);
 //       BuyProductThread thread2 = new BuyProductThread(customerService,"Malt",2);
 //       BuyProductThread thread3 = new BuyProductThread(customerService,"Malt",1);
@@ -50,12 +54,16 @@ public class Main {
 //        thread2.start();
 //        thread3.start();
 
-        SellProductThread thread1 = new SellProductThread(cashierServices,"Malt",15);
-        SellProductThread thread2 = new SellProductThread(cashierServices,"Malt",1);
-        SellProductThread thread3 = new SellProductThread(cashierServices,"Malt",5);
+        SellProductThread thread1 = new SellProductThread(cashierServices,allCustomers);
+        SellProductThread thread2 = new SellProductThread(cashierServices,allCustomers);
+        SellProductThread thread3 = new SellProductThread(cashierServices,allCustomers);
+        SellProductThread thread4 = new SellProductThread(cashierServices,allCustomers);
+        SellProductThread thread5 = new SellProductThread(cashierServices,allCustomers);
         thread1.start();
         thread2.start();
         thread3.start();
+        thread4.start();
+        thread5.start();
 
       //System.out.println(customerService2.buyProduct("Malt",21));
         System.out.println();

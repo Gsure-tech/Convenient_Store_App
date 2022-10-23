@@ -15,6 +15,7 @@ public interface CashierInterface {
     String dispenseReceipt(Customer customer, String productName, int quantity) throws NoProductBoughtException;
     void sellBasedOnPriority(List<Customer> myCustomer);
     void sellBasedOnQueue(List<Customer> myCustomer);
+    void sellProduct(List<Customer> myCustomer);
 //    String sellBasedOnQueue();
 //    String sellBasedOnPriority();
 }

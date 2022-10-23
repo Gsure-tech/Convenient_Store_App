@@ -6,14 +6,12 @@ import org.example.Exceptions.ProductNotSoldException;
 import org.example.interfaces.CashierInterface;
 import org.example.models.*;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 
 public class CashierServices implements CashierInterface {
 
     private final Cashier cashier;
+    Customer customer;
 
 
     public CashierServices(Cashier cashier) {
@@ -114,6 +112,25 @@ public class CashierServices implements CashierInterface {
             System.out.println("Selling " + customerQueue.poll());
 
            //Customer currentCustomer = myCustomer.poll();
+//            while (!customerQueue.isEmpty()) {
+//                System.out.println("Selling " + customerQueue.poll());
+//            }
+        }
+        System.out.println("Product successfully sold");
+    }
+    @Override
+    public synchronized void sellProduct(List<Customer> myCustomer) {
+
+       // System.out.println(customer.getCustomerCart().get(0));
+
+       // System.out.println("Selling ");
+        List<Customer> myCustomers = new ArrayList<>();
+        for (int i =0; i< myCustomer.size(); i++) {
+            myCustomers.add(myCustomer.get(i));
+            assert myCustomers  !=null;
+            myCustomers.remove(myCustomer.get(i));
+
+            //Customer currentCustomer = myCustomer.poll();
 //            while (!customerQueue.isEmpty()) {
 //                System.out.println("Selling " + customerQueue.poll());
 //            }
